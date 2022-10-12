@@ -25,6 +25,12 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:31.0.1-jre'
+    
+    // https://mvnrepository.com/artifact/org.terasoluna.gfw/terasoluna-gfw-jodatime
+	implementation group: 'org.terasoluna.gfw', name: 'terasoluna-gfw-jodatime', version: '5.7.1.RELEASE'
+    
+    // https://mvnrepository.com/artifact/joda-time/joda-time
+	implementation group: 'joda-time', name: 'joda-time', version: '2.11.2'
 }
 
 tasks.named('test') {
