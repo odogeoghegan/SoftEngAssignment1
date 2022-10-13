@@ -3,31 +3,33 @@ package softengassignment1;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.joda.time.LocalDate;
+import org.joda.time.*;
+
+import softengassignment1.Module;
 
 public class Lecturer {
 	private final String name;
     private final int age;
-    private final LocalDate dateOfBirth;
+    private final DateTime dateOfBirth;
     private int ID;
     private String username;
     private CourseProgramme registeredCourse;
-    private List<Module> Modules = new ArrayList<Module>();  
+    private List<Module> modules = new ArrayList<Module>();  
+     
     
-    public Lecturer(String name, int id, int day, int month, int year, CourseProgramme course){
-        this.name = name;
+    public Lecturer(String name, int id, int day, int month, int year){
+    	this.name = name;
         this.ID = id;
-        this.dateOfBirth = new LocalDate(year, month, day);
-        this.age = setAge();
-        this.registeredCourse = course;
-        registerToCourse();
+        this.dateOfBirth = new DateTime(year, month, day, 0, 0);
+        this.age= new Period(dateOfBirth, DateTime.now(), PeriodType.yearMonthDay()).getYears();;
     }
     
-    // Calcuating Current Age of Student using Joda-Time
-    private int setAge() {
-        LocalDate currentAge = new LocalDate();
-        currentAge = dateOfBirth.minusYears(currentAge.getYear());
-        return currentAge.getYear();
+    public Lecturer(String name, int id, int day, int month, int year, CourseProgramme course){
+    	this.name = name;
+        this.ID = id;
+        this.dateOfBirth = new DateTime(year, month, day, 0, 0);
+        this.age = new Period(dateOfBirth, DateTime.now(), PeriodType.yearMonthDay()).getYears();
+        registerToCourse(course);
     }
     
     // Lecturer Username is the concatenation of Name and Age
@@ -36,8 +38,9 @@ public class Lecturer {
         return username;
     }
 
-    private void registerToCourse() {
-        Modules = this.registeredCourse.getModuleList();
+    public void registerToCourse(CourseProgramme course) {
+    	this.registeredCourse=course;
+        modules = this.registeredCourse.getModuleList();
         this.registeredCourse.addLecturerToCourse(this);
     }
     
@@ -50,7 +53,7 @@ public class Lecturer {
         return age;
     }
     
-    public LocalDate getDOB() {
+    public DateTime getDOB() {
         return dateOfBirth;
     }
     
@@ -59,7 +62,7 @@ public class Lecturer {
     }
     
     public List<Module> getModules() {
-        return Modules;
+        return modules;
     }
     
     public int getID() {

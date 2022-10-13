@@ -12,12 +12,13 @@ class LecturerTest {
 	@Test
 	// todo add some lecturer tests
 	void lecturer_should_have_username_with_age() {
-		// Given a new student born 10 years ago
+		// Given a new lecturer born in 1984
+		Lecturer Micheal = new Lecturer("MichealMartin", 90001, 12, 3, 1984);
 		
 		// When 		
 		
 		// Then his name should be the age concatenated with the name
-		assertEquals("a", "a");
+		assertEquals("MichealMartin38", Micheal.getUsername());
 	}
 
 }

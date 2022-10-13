@@ -15,7 +15,7 @@ class StudentTest {
 	
 
 	@Test
-	void student_name_should_be_name_and_age() {
+	void student_username_should_be_name_and_age() {
 		// Given a new student born 10 years ago
 		Calendar cal = Calendar.getInstance();
 		Student joe = new Student("Joe", 90, cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH)+1, cal.get(Calendar.YEAR)-10);
